@@ -1,0 +1,7 @@
+/*main{*/
+/*margin: 0px auto}*/
+/*body{direction: rtl;}*/
+td{border: 1px solid black;}
+th{background-color: aqua;}
+tbody tr:nth-child(even) {background-color: lightgray;}
+tbody tr:hover{background-color: yellow;}
