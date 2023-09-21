@@ -4,10 +4,10 @@ function CreateTble(){
     let str="";
     for(let line of raw_data){
         str+="<tr>";
-        str+=`<td><button onclick="editLine(${line.id})">עדכן</button></td>`;
+        str+=`<td><button class="btn" onclick="editLine(${line.id})">עדכן</button></td>`;
         str+=`<td>${line.id}</td>`;
         str+=`<td>${line.name}</td>`;
-        str+=`<td><button onclick="deleteLine(${line.id})">מחק</button></td>`;
+        str+=`<td><button class="btn" onclick="deleteLine(${line.id})">מחק</button></td>`;
         str+="</tr>";
     }
     document.getElementById("mainTable").innerHTML=str;

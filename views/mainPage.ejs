@@ -1,22 +1,23 @@
 
 <%-include("page_top.ejs")%>
-<main>
-<h1 id="h1">
-Employees
-</h1>
-    <input id="name" placeholder="הקלד שם חדש">
-    <button onclick="AddNewLine()">הוסף</button>
-    <table>
-        <thead>
-        <tr>
-            <th></th>
-            <th>ID</th>
-            <th>Name</th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody id="mainTable">  </tbody>
-    </table>
-</main>
+<center><main>
+        <h1 id="h1">
+            רשימת העובדים
+        </h1>
+        <input id="name" placeholder="הקלד שם חדש">
+        <button onclick="AddNewLine()">הוסף</button>
+        <br><br>
+        <table>
+            <thead>
+            <tr>
+                <th></th>
+                <th>מס' עובד</th>
+                <th>שם מלא</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody id="mainTable">  </tbody>
+        </table>
+    </main></center>
 <script src="/js/script.js"></script>
 <%-include("page_bottom.ejs")%>
