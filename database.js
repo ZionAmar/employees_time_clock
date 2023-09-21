@@ -5,11 +5,11 @@ const mysql = require('mysql2');
 let HOST     =require("./gen_params").HOST     ;
 let USER     =require("./gen_params").USER     ;
 let PASSWORD =require("./gen_params").PASSWORD ;
-let DATABASE =require("./gen_params").DATABASE ;
+let Database =require("./gen_params").DATABASE ;
 console.log("database.HOST	=",HOST	);
 console.log("database.USER	=",USER	);
 console.log("database.PASSWORD=",PASSWORD);
-console.log("database.DATABASE=",DATABASE);
+console.log("database.Database=",Database);
 
 
 
@@ -17,7 +17,7 @@ const pool = mysql.createPool({
     host:		HOST		,
     user:		USER		,
     password:	PASSWORD	,
-    database:	DATABASE	,
+    database:	Database	,
     waitForConnections: true,
     connectionLimit: 10,
     maxIdle: 10, // max idle connections, the default value is the same as `connectionLimit`
