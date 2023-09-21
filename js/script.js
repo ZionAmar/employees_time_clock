@@ -13,7 +13,7 @@ function CreateTble(){
     document.getElementById("mainTable").innerHTML=str;
 }
 async function getList() {
-    let response = await fetch('/C/List');
+    let response = await fetch('/emp/List');
     let data = await response.json();
     raw_data = data.rows;
     console.log(raw_data);
@@ -21,7 +21,7 @@ async function getList() {
 }
 async function AddNewLine() {
     let name = document.getElementById("name").value;
-    let response = await fetch('/C/Add',{
+    let response = await fetch('/emp/Add',{
             method: 'POST',
             headers:{
                 'Content-Type':'application/json'
@@ -34,7 +34,7 @@ async function AddNewLine() {
     getList();
 }
 async function deleteLine(id) {
-    let response = await fetch(`/C/Delete/${id}`,{
+    let response = await fetch(`/emp/Delete/${id}`,{
             method: 'DELETE',
         }
     );
@@ -44,7 +44,7 @@ async function editLine(id) {
     let objToServer={};
     objToServer.id=id;
     objToServer.name=document.getElementById("name").value;
-    let response = await fetch('/C/Update', {
+    let response = await fetch('/emp/Update', {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
@@ -55,4 +55,3 @@ async function editLine(id) {
     getList();
 }
 getList();
-// CreateTble();
