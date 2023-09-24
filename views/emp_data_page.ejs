@@ -1,0 +1,28 @@
+
+<%-include("page_top.ejs")%>
+<center><main>
+        <h1 id="h1">
+            שעון נוכחות
+        </h1>
+        <label>בחר עובד:</label>
+        <select id="employeeName">
+        </select>
+        <br><br>
+        <button onclick="getList()">הצג</button>
+        <br><br>
+                <table>
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>מס' עובד</th>
+                        <th>שם מלא</th>
+                        <th>שעת כניסה</th>
+                        <th>שעת יציאה</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody id="mainTable">  </tbody>
+                </table>
+    </main></center>
+<script src="/js/time_clock_script.js"></script>
+<%-include("page_bottom.ejs")%>
