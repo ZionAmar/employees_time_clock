@@ -15,3 +15,5 @@ app.listen(port, () => {
 //הפניות בראוטר
 const employees =require('./routes/employees');
 app.use('/emp',employees);
+const time_clock =require('./routes/time_clock');
+app.use('/t_c',time_clock);
