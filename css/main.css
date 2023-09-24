@@ -6,6 +6,6 @@ th{background-color: aqua;}
 tbody tr:hover{background-color: gray;
 color: white;
 }
-.btn{
+.btn,option{
     font-size: x-large;
 }
