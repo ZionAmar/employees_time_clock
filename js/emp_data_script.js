@@ -13,16 +13,9 @@ function CreateTble(){
         str+="</tr>";
     }
     document.getElementById("mainTable").innerHTML=str;
-    let empName="";
-    for(let line of raw_data){
-        empName+="<option>";
-        empName+= line.name;
-        empName+="</option>";
-    }
-    document.getElementById("employeeName").innerHTML=empName;
-
 }
 async function getList() {
+    let name = document.getElementById("name").value;
     let response = await fetch('/empData/List');
     let data = await response.json();
     raw_data = data.rows;
@@ -70,3 +63,21 @@ async function editLine(id) {
     );
     getList();
 }
+async function getList2() {
+    let response = await fetch('/timeClock/List');
+    let data = await response.json();
+    raw_data = data.rows;
+    console.log(raw_data);
+    selectEmp();
+}
+
+function selectEmp(){
+    let empName="";
+    for(let line of raw_data){
+        empName+="<option id='name'>";
+        empName+= line.name;
+        empName+="</option>";
+    }
+    document.getElementById("employeeName").innerHTML=empName;
+}
+getList2();

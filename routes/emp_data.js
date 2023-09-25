@@ -24,7 +24,8 @@ router.post("/Add", (req, res) => {
     });
 });
 router.get("/List", (req, res) => {
-    let q = `SELECT * FROM \`employees\``;
+    let name = req.body.name;
+    let q = `SELECT * FROM \`time_clock\`WHERE name =${name}`;
     db_pool.query(q, function (err, rows, fields) {
         if (err) {
             res.status(500).json({message: err})
@@ -50,13 +51,14 @@ router.patch("/Update", (req, res) => {
     let name = req.body.name;
     let entry_time = req.body.entry_time;
     let exit_time = req.body.exit_time;
-    let q = `UPDATE \`time_clock\` SET \`name\` = '${name}',\`entry_time\` = '${entry_time}',\`exit_time\` = '${exit_time}' WHERE id =${id}`;
+    let q ="SELECT * FROM `time_clock` WHERE `name` = ";
+    q+=`'${name}'`
     db_pool.query(q, function (err, rows, fields) {
 
         if (err) {
             res.status(500).json({message: err})
         } else {
-            res.status(200).json({message: "OK"});
+            res.status(200).json({rows: rows});
         }
 
     });
