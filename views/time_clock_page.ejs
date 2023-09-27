@@ -8,26 +8,16 @@
         <select id="employeeName">
         </select>
         <br><br>
+        <label>תאריך:</label>
+        <input type="date" id="date">
         <label>שעת כניסה:</label>
         <input type="time" id="entry_time">
         <label>שעת יציאה:</label>
         <input type="time" id="exit_time">
         <button onclick="AddNewLine()">הוסף</button>
                 <br><br>
-                <a href="http://localhost:5656/empData" target="_blank">סה''כ נוכחות..</a>
-        <!--        <table>-->
-<!--            <thead>-->
-<!--            <tr>-->
-<!--                <th></th>-->
-<!--                <th>מס' עובד</th>-->
-<!--                <th>שם מלא</th>-->
-<!--                <th>שעת כניסה</th>-->
-<!--                <th>שעת יציאה</th>-->
-<!--                <th></th>-->
-<!--            </tr>-->
-<!--            </thead>-->
-<!--            <tbody id="mainTable">  </tbody>-->
-<!--        </table>-->
+                <a href="http://localhost:5656/empData" target="_blank">מעבר אל השעות שלי...</a>
+
     </main></center>
 <script src="/js/time_clock_script.js"></script>
 <%-include("page_bottom.ejs")%>

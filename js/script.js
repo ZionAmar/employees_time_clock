@@ -6,7 +6,7 @@ function CreateTble(){
         str+="<tr>";
         str+=`<td><button class="btn" onclick="editLine(${line.id})">עדכן</button></td>`;
         str+=`<td>${line.id}</td>`;
-        str+=`<td>${line.name}</td>`;
+        str+=`<td>${line.fullName}</td>`;
         str+=`<td><button class="btn" onclick="deleteLine(${line.id})">מחק</button></td>`;
         str+="</tr>";
     }
@@ -20,13 +20,14 @@ async function getList() {
     CreateTble();
 }
 async function AddNewLine() {
-    let name = document.getElementById("name").value;
+    let firstName = document.getElementById("firstName").value;
+    let lastName = document.getElementById("lastName").value;
     let response = await fetch('/emp/Add',{
             method: 'POST',
             headers:{
                 'Content-Type':'application/json'
             },
-            body:JSON.stringify({name:name})
+            body:JSON.stringify({firstName:firstName,lastName:lastName})
         }
     );
     let data = await response.json();
