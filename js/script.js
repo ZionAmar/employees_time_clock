@@ -44,7 +44,8 @@ async function deleteLine(id) {
 async function editLine(id) {
     let objToServer={};
     objToServer.id=id;
-    objToServer.name=document.getElementById("name").value;
+    objToServer.firstName = document.getElementById("firstName").value;
+    objToServer.lastName = document.getElementById("lastName").value;
     let response = await fetch('/emp/Update', {
             method: 'PATCH',
             headers: {

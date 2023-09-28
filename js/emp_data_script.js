@@ -8,13 +8,13 @@ function CreateTble(){
         str+=`<td>${line.FormattedDate}</td>`;
         str+=`<td>${line.entry_time}</td>`;
         str+=`<td>${line.exit_time}</td>`;
+        str+=`<td><button class="btn" onclick="deleteLine(${line.id})">מחק</button></td>`;
         str+="</tr>";
     }
     document.getElementById("mainTable").innerHTML=str;
 }
-async function updateList(id) {
+async function showList() {
     let objToServer={};
-    objToServer.id=id;
     objToServer.name=document.getElementById("employeeName").value;
     let response = await fetch('/empData/Update', {
             method: 'PATCH',
@@ -25,15 +25,15 @@ async function updateList(id) {
         }
     );
     if (response.ok) {
-        let data = await response.json(); // קבל את הנתונים כ-JSON מהתגובה
+        let data = await response.json();
         raw_data = data.rows;
-        console.log(raw_data); // עשה משהו עם הנתונים שקיבלת
+        console.log(raw_data);
     } else {
-        console.error('שגיאה בבקשה לשרת');
+        console.error('Error');
     }
     CreateTble();
 }
-async function getListEmp() {
+async function getEmpList() {
     let response = await fetch('/timeClock/List');
     let data = await response.json();
     raw_data = data.rows;
@@ -48,6 +48,14 @@ function selectEmp(){
         empName+= line.fullName;
         empName+="</option>";
     }
-    document.getElementById("employeeName").innerHTML=empName;
+    document.getElementById("employeeName").innerHTML= empName;
 }
-getListEmp();
+async function deleteLine(id) {
+    let response = await fetch(`/empData/Delete/${id}`,{
+            method: 'DELETE',
+        }
+    );
+    showList();
+}
+
+getEmpList();
