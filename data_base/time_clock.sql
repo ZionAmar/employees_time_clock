@@ -24,32 +24,25 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `employees`
+-- Table structure for table `time_clock`
 --
 
-CREATE TABLE `employees` (
+CREATE TABLE `time_clock` (
   `id` int(11) NOT NULL,
-  `firstName` varchar(50) NOT NULL,
-  `lastName` varchar(50) NOT NULL
+  `name` varchar(50) NOT NULL,
+  `date` date DEFAULT NULL,
+  `entry_time` time DEFAULT NULL,
+  `exit_time` time DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `employees`
---
-
-INSERT INTO `employees` (`id`, `firstName`, `lastName`) VALUES
-(23, 'ציון', 'עמר'),
-(27, 'אבי', 'בוזגלו'),
-(28, 'חיים', 'כהן');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `employees`
+-- Indexes for table `time_clock`
 --
-ALTER TABLE `employees`
+ALTER TABLE `time_clock`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -57,10 +50,10 @@ ALTER TABLE `employees`
 --
 
 --
--- AUTO_INCREMENT for table `employees`
+-- AUTO_INCREMENT for table `time_clock`
 --
-ALTER TABLE `employees`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+ALTER TABLE `time_clock`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=183;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

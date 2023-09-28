@@ -6,8 +6,9 @@ router.get("/", (req, res) => {
     res.render("mainPage", {pageTitle: "Employees"});
 });
 router.post("/Add", (req, res) => {
-    let name = req.body.name;
-    let q = `INSERT INTO \`employees\` (\`name\`) VALUES ('${name}')`;
+    let firstName = req.body.firstName;
+    let lastName = req.body.lastName;
+    let q = `INSERT INTO \`employees\` (\`firstName\`,\`lastName\`) VALUES ('${firstName}','${lastName}')`;
 
     db_pool.query(q, function (err, rows, fields) {
 
@@ -20,7 +21,7 @@ router.post("/Add", (req, res) => {
     });
 });
 router.get("/List", (req, res) => {
-    let q = `SELECT * FROM \`employees\``;
+    let q = `SELECT id, CONCAT(firstName, ' ', lastName) AS fullName FROM employees`;
     db_pool.query(q, function (err, rows, fields) {
         if (err) {
             res.status(500).json({message: err})
@@ -42,10 +43,14 @@ router.delete("/Delete/:id", (req, res) => {
 });
 router.patch("/Update", (req, res) => {
     let id = req.body.id;
-    let name = req.body.name;
-    let q = `UPDATE \`employees\` SET \`name\` = '${name}' WHERE id =${id}`;
-    db_pool.query(q, function (err, rows, fields) {
+    let firstName = req.body.firstName;
+    let lastName = req.body.lastName;
+    let q = "UPDATE employees";
+        q+= ` SET firstName = '${firstName}', lastName = '${lastName}'`;
+        q+= ` WHERE id = '${id}'`;
 
+    console.log(q);
+    db_pool.query(q, function (err, rows, fields) {
         if (err) {
             res.status(500).json({message: err})
         } else {
