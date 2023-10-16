@@ -9,3 +9,98 @@ color: white;
 .btn,option{
     font-size: x-large;
 }
+
+
+ body {
+     font-family: Arial, sans-serif;
+     background-color: #f4f4f4;
+     margin: 0;
+     padding: 0;
+ }
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #007bff;
+    color: #fff;
+}
+
+.company-logo {
+    width: 100px;
+}
+
+#title{
+    font-size: 28px;
+    font-weight: 600;
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+}
+.timestamp-label {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+}
+
+.timestamp {
+    margin: 0 5px;
+}
+
+.signature-image {
+    max-width: 100px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px;
+    width: 80%;
+    max-width: 800px;
+    margin-top: 50px;
+}
+
+.employee-details {
+    margin: 20px 0;
+}
+
+.employee-details p {
+    margin: 5px 0;
+}
+
+.entry-button,
+.exit-button,
+.query-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+#employee-image {
+    display: none;
+    max-width: 100px;
+    border-radius: 50%;
+}
+
+#employee-image.active {
+    display: block;
+}
+
+#entry-message {
+    color: green;
+}

@@ -1,15 +1,24 @@
 
 <%-include("page_top.ejs")%>
 <center><main>
-        <h1 id="h1">
-            שעון נוכחות
-        </h1>
-        <label>בחר עובד:</label>
-        <select id="employeeName">
-        </select>
-        <br><br>
-        <button onclick="AddNewLine()">כניסה</button>
-        <button onclick="editLine()">יציאה</button>
+
+                <div class="content">
+                        <div class="card">
+                <div class="employee-details">
+                        <label>בחר עובד:</label><br>
+                        <select id="employeeName"></select>
+                </div>
+        <button class="entry-button" onclick="AddNewLine()">כניסה</button>
+        <button class="exit-button"  onclick="editLine()">יציאה</button>
+                <div id="employee-details" style="display: none">
+                        <img id="employee-image" src="employee_image.jpg" alt="תמונת עובד" />
+                        <p id="employee-id">תעודת זהות: 12345</p>
+                        <p id="employee-name">שם: גיל כהן</p>
+                        <p id="employee-role">תפקיד: מנהל משאבי אנוש</p>
+                        <p id="entry-message"></p>
+                </div>
+                </div>
+                </div>
                 <br><br>
                 <a href="http://localhost:5656/empData" target="_blank">מעבר אל השעות שלי...</a>
 

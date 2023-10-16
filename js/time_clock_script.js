@@ -30,7 +30,8 @@ async function AddNewLine() {
     let data = await response.json();
     console.log(data);
     getList();
-}// async function editLine(id) {
+    recordEntry();
+}
 async function editLine() {
     let objToServer={};
     objToServer.name=document.getElementById("employeeName").value;
@@ -43,6 +44,79 @@ async function editLine() {
         }
     );
     getList();
+    recordExit();
 }
 
 getList();
+
+function updateTime() {
+    document.getElementById("title").innerHTML="שעון נוכחות";
+    const timestampElement = document.getElementById("timestamp");
+    const datestampElement = document.getElementById("datestamp");
+    const now = new Date();
+    timestampElement.textContent = now.toLocaleTimeString();
+    datestampElement.textContent = now.toLocaleDateString();
+}
+
+function recordEntry() {
+    const employeeSelect = document.getElementById("employeeName");
+    const selectedEmployee =
+        employeeSelect.options[employeeSelect.selectedIndex];
+    const employeeDetails = document.getElementById("employee-details");
+    const entryMessage = document.getElementById("entry-message");
+    const employeeImage = document.getElementById("employee-image");
+
+    // נבדוק אם נבחר עובד מהרשימה
+    if (selectedEmployee) {
+        // נציג את פרטי העובד והודעת כניסה
+        employeeDetails.style.display = "block";
+        employeeImage.src = "employee_image.jpg";
+        const employeeId = document.getElementById("employee-id");
+        const employeeName = document.getElementById("employee-name");
+        const employeeRole = document.getElementById("employee-role");
+
+        employeeId.textContent = "תעודת זהות: " + selectedEmployee.value;
+        employeeName.textContent = "שם: " + selectedEmployee.text;
+        employeeRole.textContent = "תפקיד: מנהל משאבי אנוש";
+        entryMessage.textContent = "החתימה בוצעה בהצלחה.";
+
+        // הצגת הפרטים למשך 4 שניות
+        setTimeout(function () {
+            employeeDetails.style.display = "none";
+        }, 4000);
+    } else {
+        alert("יש לבחור עובד מהרשימה");
+    }
+}
+function recordExit() {
+    const employeeSelect = document.getElementById("employeeName");
+    const selectedEmployee =
+        employeeSelect.options[employeeSelect.selectedIndex];
+    const employeeDetails = document.getElementById("employee-details");
+    const entryMessage = document.getElementById("entry-message");
+    const employeeImage = document.getElementById("employee-image");
+
+    // נבדוק אם נבחר עובד מהרשימה
+    if (selectedEmployee) {
+        // נציג את פרטי העובד והודעת יציאה
+        employeeDetails.style.display = "block";
+        employeeImage.src = "employee_image.jpg";
+        const employeeId = document.getElementById("employee-id");
+        const employeeName = document.getElementById("employee-name");
+        const employeeRole = document.getElementById("employee-role");
+
+        employeeId.textContent = "תעודת זהות: " + selectedEmployee.value;
+        employeeName.textContent = "שם: " + selectedEmployee.text;
+        employeeRole.textContent = "תפקיד: מנהל משאבי אנוש";
+        entryMessage.textContent = "החתימה בוצעה בהצלחה.";
+
+        // הצגת הפרטים למשך 4 שניות
+        setTimeout(function () {
+            employeeDetails.style.display = "none";
+        }, 4000);
+    } else {
+        alert("יש לבחור עובד מהרשימה");
+    }
+}
+updateTime();
+setInterval(updateTime, 1000);

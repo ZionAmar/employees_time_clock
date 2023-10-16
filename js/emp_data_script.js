@@ -57,5 +57,14 @@ async function deleteLine(id) {
     );
     showList();
 }
-
+function updateTime() {
+    document.getElementById("title").innerHTML="השעות שלי";
+    const timestampElement = document.getElementById("timestamp");
+    const datestampElement = document.getElementById("datestamp");
+    const now = new Date();
+    timestampElement.textContent = now.toLocaleTimeString();
+    datestampElement.textContent = now.toLocaleDateString();
+}
 getEmpList();
+updateTime();
+setInterval(updateTime, 1000);

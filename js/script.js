@@ -56,4 +56,14 @@ async function editLine(id) {
     );
     getList();
 }
+function updateTime() {
+    document.getElementById("title").innerHTML="רשימת העובדים";
+    const timestampElement = document.getElementById("timestamp");
+    const datestampElement = document.getElementById("datestamp");
+    const now = new Date();
+    timestampElement.textContent = now.toLocaleTimeString();
+    datestampElement.textContent = now.toLocaleDateString();
+}
 getList();
+updateTime();
+setInterval(updateTime, 1000);
