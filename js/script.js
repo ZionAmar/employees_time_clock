@@ -58,6 +58,7 @@ async function editLine(id) {
 }
 function updateTime() {
     document.getElementById("title").innerHTML="רשימת העובדים";
+    document.querySelector(".signature-image").src="https://www.liquidplanner.com/wp-content/uploads/2021/04/339hgg-1.png";
     const timestampElement = document.getElementById("timestamp");
     const datestampElement = document.getElementById("datestamp");
     const now = new Date();
