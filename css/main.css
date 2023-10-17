@@ -79,6 +79,12 @@ color: white;
     margin: 5px 0;
 }
 
+#employee-input {
+    font-size: 24px;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 20px; /* יוריד את האינפוט למתחת לכפתורים */
+}
 .entry-button,
 .exit-button,
 .query-button {
@@ -86,21 +92,27 @@ color: white;
     color: #fff;
     border: none;
     padding: 10px 20px;
+    font-size: 28px;
     border-radius: 5px;
     cursor: pointer;
     margin: 10px;
 }
-
-#employee-image {
+#employee-details {
     display: none;
+}
+#entry-message {
+    color: green;
+    font-size: 24px;
+}
+#employee-image {
     max-width: 100px;
     border-radius: 50%;
 }
 
-#employee-image.active {
-    display: block;
-}
+/*#employee-image.active {*/
+/*    display: block;*/
+/*}*/
 
-#entry-message {
-    color: green;
-}
+/*#entry-message {*/
+/*    color: green;*/
+/*}*/

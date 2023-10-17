@@ -30,7 +30,6 @@ async function AddNewLine() {
     let data = await response.json();
     console.log(data);
     getList();
-    recordEntry();
 }
 async function editLine() {
     let objToServer={};
@@ -44,7 +43,6 @@ async function editLine() {
         }
     );
     getList();
-    recordExit();
 }
 
 getList();
@@ -59,63 +57,57 @@ function updateTime() {
 }
 
 function recordEntry() {
-    const employeeSelect = document.getElementById("employeeName");
-    const selectedEmployee =
-        employeeSelect.options[employeeSelect.selectedIndex];
+    const employeeInput = document.getElementById("employee-input");
+    const selectedEmployee = employeeInput.value;
     const employeeDetails = document.getElementById("employee-details");
     const entryMessage = document.getElementById("entry-message");
-    const employeeImage = document.getElementById("employee-image");
 
-    // נבדוק אם נבחר עובד מהרשימה
     if (selectedEmployee) {
-        // נציג את פרטי העובד והודעת כניסה
+        AddNewLine();
         employeeDetails.style.display = "block";
-        employeeImage.src = "employee_image.jpg";
-        const employeeId = document.getElementById("employee-id");
-        const employeeName = document.getElementById("employee-name");
-        const employeeRole = document.getElementById("employee-role");
-
-        employeeId.textContent = "תעודת זהות: " + selectedEmployee.value;
-        employeeName.textContent = "שם: " + selectedEmployee.text;
-        employeeRole.textContent = "תפקיד: מנהל משאבי אנוש";
         entryMessage.textContent = "החתימה בוצעה בהצלחה.";
-
-        // הצגת הפרטים למשך 4 שניות
+        document.getElementById("employee-id").textContent = selectedEmployee;
+        document.getElementById("employee-name").textContent = "גיל כהן";
+        document.getElementById("employee-image").src = "employee_image.jpg"; // הוסף את כתובת קובץ התמונה
         setTimeout(function () {
             employeeDetails.style.display = "none";
+            entryMessage.textContent = "";
+            employeeInput.value = "";
         }, 4000);
     } else {
-        alert("יש לבחור עובד מהרשימה");
+        alert("אנא הכנס מספר עובד");
     }
 }
 function recordExit() {
-    const employeeSelect = document.getElementById("employeeName");
-    const selectedEmployee =
-        employeeSelect.options[employeeSelect.selectedIndex];
+    const employeeInput = document.getElementById("employee-input");
+    const selectedEmployee = employeeInput.value;
     const employeeDetails = document.getElementById("employee-details");
     const entryMessage = document.getElementById("entry-message");
-    const employeeImage = document.getElementById("employee-image");
 
-    // נבדוק אם נבחר עובד מהרשימה
     if (selectedEmployee) {
-        // נציג את פרטי העובד והודעת יציאה
+        editLine();
         employeeDetails.style.display = "block";
-        employeeImage.src = "employee_image.jpg";
-        const employeeId = document.getElementById("employee-id");
-        const employeeName = document.getElementById("employee-name");
-        const employeeRole = document.getElementById("employee-role");
-
-        employeeId.textContent = "תעודת זהות: " + selectedEmployee.value;
-        employeeName.textContent = "שם: " + selectedEmployee.text;
-        employeeRole.textContent = "תפקיד: מנהל משאבי אנוש";
-        entryMessage.textContent = "החתימה בוצעה בהצלחה.";
-
-        // הצגת הפרטים למשך 4 שניות
+        entryMessage.textContent = "יציאה בוצעה בהצלחה.";
+        document.getElementById("employee-id").textContent = selectedEmployee;
+        document.getElementById("employee-name").textContent = "גיל כהן";
+        document.getElementById("employee-image").src = "employee_image.jpg"; // הוסף את כתובת קובץ התמונה
         setTimeout(function () {
             employeeDetails.style.display = "none";
+            entryMessage.textContent = "";
+            employeeInput.value = "";
         }, 4000);
     } else {
-        alert("יש לבחור עובד מהרשימה");
+        alert("אנא הכנס מספר עובד");
+    }
+}
+function queryEmployee() {
+    // שימוש בכתובת דף אחר לפי המספר שנמצא באינפוט
+    const employeeInput = document.getElementById("employee-input");
+    const selectedEmployee = employeeInput.value;
+    if (selectedEmployee) {
+        window.location.href = `http://localhost:5656/empData?id=${selectedEmployee}`;
+    } else {
+        alert("אנא הכנס מספר עובד");
     }
 }
 updateTime();
