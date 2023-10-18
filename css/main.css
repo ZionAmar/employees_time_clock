@@ -3,9 +3,6 @@ font-size: x-large;
 }
 td{border: 1px solid black;}
 th{background-color: aqua;}
-tbody tr:hover{background-color: gray;
-color: white;
-}
 .btn,option{
     font-size: x-large;
 }

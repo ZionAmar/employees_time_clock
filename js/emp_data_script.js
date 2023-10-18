@@ -1,3 +1,4 @@
+
 let raw_data=[];
 console.log("הדף עובד");
 function CreateTble(){
@@ -6,11 +7,10 @@ function CreateTble(){
     for(let line of raw_data){
         EMPname =`שלום ${line.name}`;
         str+="<tr>";
-        str+=`<td>${line.name}</td>`;
         str+=`<td>${line.FormattedDate}</td>`;
-        str+=`<td>${line.entry_time}</td>`;
-        str+=`<td>${line.exit_time}</td>`;
-        str+=`<td><button class="btn" onclick="deleteLine(${line.id})">מחק</button></td>`;
+        str+=`<td style="color: green">${line.entry_time}</td>`;
+        str+=`<td style="color: red">${line.exit_time}</td>`;
+        str+=`<td>${line.total}</td>`;
         str+="</tr>";
     }
     document.getElementById("mainTable").innerHTML= str;

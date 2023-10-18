@@ -8,7 +8,10 @@ router.get("/", (req, res) => {
 router.post("/Add", (req, res) => {
     let { id } = req.body;
     let now = new Date();
-    const date = now.toISOString().slice(0, 10); // משיג תאריך בפורמט "YYYY-MM-DD"
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    const date = `${year}-${month}-${day}`;
     let entry_time = now.toLocaleTimeString();
 
     // שאילתת SELECT כדי לקבל את השם מטבלת העובדים
@@ -48,7 +51,10 @@ router.get("/List", (req, res) => {
 router.patch("/Update", (req, res) => {
     let { id } = req.body;
     let now = new Date();
-    const date = now.toISOString().slice(0, 10); // משיג תאריך בפורמט "YYYY-MM-DD"
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    const date = `${year}-${month}-${day}`;
     let exit_time = now.toLocaleTimeString();
 
     // שאילתת SELECT כדי לקבל את השם מטבלת העובדים
@@ -65,12 +71,15 @@ router.patch("/Update", (req, res) => {
             let insertQuery = "UPDATE time_clock";
             insertQuery += " SET exit_time ";
             insertQuery += `= '${exit_time}'`;
+            insertQuery += " , total ";
+            insertQuery += `= TIMEDIFF(exit_time, entry_time)`;
             insertQuery += " WHERE name";
             insertQuery += `= '${name}'`;
             insertQuery += " AND date";
             insertQuery += `= '${date}'`;
             insertQuery += " AND entry_time";
             insertQuery += " IS NOT NULL";
+            console.log(insertQuery);
             db_pool.query(insertQuery, (error, results, fields) => {
                 if (error) {
                     res.status(500).json({ message: error });

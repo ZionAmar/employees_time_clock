@@ -85,7 +85,7 @@ function recordEntry() {
             entryMessage.textContent = "";
             employeeInput.value = "";
             employeeInput.type = "text";
-        }, 4000);
+        }, 3000);
     }
     else {
         alert("אנא הכנס מספר עובד תקין");
@@ -108,7 +108,7 @@ function recordExit() {
             employeeDetails.style.display = "none";
             entryMessage.textContent = "";
             employeeInput.value = "";
-        }, 4000);
+        }, 3000);
     } else {
         alert("אנא הכנס מספר עובד תקין");
     }

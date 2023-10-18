@@ -4,9 +4,12 @@
 <!--        <h1 id="h1">-->
 <!--            רשימת העובדים-->
 <!--        </h1>-->
-        <input id="firstName" placeholder="שם פרטי">
-        <input id="lastName" placeholder="שם משפחה">
-        <button onclick="AddNewLine()">הוסף</button>
+        <form action="http://localhost:5656/photo/upload" method="post" enctype="multipart/form-data" target="_self">
+            <input type="file" id="image" name="image">
+            <button type="submit" onclick="AddNewLine()">הוסף</button>
+        </form>
+
+<!--        <button onclick="AddNewLine()">הוסף</button>-->
         <br><br>
         <table>
             <thead>
