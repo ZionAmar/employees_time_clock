@@ -1,13 +1,23 @@
 let raw_data=[];
 console.log(raw_data);
-function CreateEmpList(){
-    let empName="";
-    for(let line of raw_data){
-        empName+="<option>";
-        empName+= line.fullName;
-        empName+="</option>";
+function inputView(){
+    const numericInput = document.getElementById("employee-input");
+    numericInput.addEventListener("input", function() {
+        this.value = this.value.replace(/\D/g, ''); // מסנן רק מספרים
+    });
+    numericInput.addEventListener("focus", function() {
+        this.type = "password";
+    });
+}
+
+function EmpList(x){
+    let i = 0;
+    for(let line of raw_data) {
+        if (line.id == x) {
+            i++;
+        }
     }
-    document.getElementById("employeeName").innerHTML=empName;
+        return i > 0;
 
 }
 async function getList() {
@@ -15,25 +25,25 @@ async function getList() {
     let data = await response.json();
     raw_data = data.rows;
     console.log(raw_data);
-    CreateEmpList();
+    // CreateEmpList();
 }
 async function AddNewLine() {
-    let name = document.getElementById("employeeName").value;
+    let id = document.getElementById("employee-input").value;
     let response = await fetch('/timeClock/Add',{
             method: 'POST',
             headers:{
                 'Content-Type':'application/json'
             },
-            body:JSON.stringify({name:name})
+            body:JSON.stringify({id:id})
         }
     );
     let data = await response.json();
     console.log(data);
-    getList();
+    // getList();
 }
 async function editLine() {
     let objToServer={};
-    objToServer.name=document.getElementById("employeeName").value;
+    objToServer.id=document.getElementById("employee-input").value;
     let response = await fetch('/timeClock/Update', {
             method: 'PATCH',
             headers: {
@@ -42,10 +52,10 @@ async function editLine() {
             body: JSON.stringify(objToServer)
         }
     );
-    getList();
+    // getList();
 }
 
-getList();
+// getList();
 
 function updateTime() {
     document.getElementById("title").innerHTML="שעון נוכחות";
@@ -61,21 +71,24 @@ function recordEntry() {
     const selectedEmployee = employeeInput.value;
     const employeeDetails = document.getElementById("employee-details");
     const entryMessage = document.getElementById("entry-message");
-
-    if (selectedEmployee) {
+    console.log(EmpList(selectedEmployee));
+    if (selectedEmployee && EmpList(selectedEmployee)) {
         AddNewLine();
+
         employeeDetails.style.display = "block";
         entryMessage.textContent = "החתימה בוצעה בהצלחה.";
-        document.getElementById("employee-id").textContent = selectedEmployee;
+        // document.getElementById("employee-id").textContent = selectedEmployee;
         document.getElementById("employee-name").textContent = "גיל כהן";
-        document.getElementById("employee-image").src = "employee_image.jpg"; // הוסף את כתובת קובץ התמונה
+        document.getElementById("employee-image").src = "https://www.liquidplanner.com/wp-content/uploads/2021/04/339hgg-1.png"; // הוסף את כתובת קובץ התמונה
         setTimeout(function () {
             employeeDetails.style.display = "none";
             entryMessage.textContent = "";
             employeeInput.value = "";
+            employeeInput.type = "text";
         }, 4000);
-    } else {
-        alert("אנא הכנס מספר עובד");
+    }
+    else {
+        alert("אנא הכנס מספר עובד תקין");
     }
 }
 function recordExit() {
@@ -84,20 +97,20 @@ function recordExit() {
     const employeeDetails = document.getElementById("employee-details");
     const entryMessage = document.getElementById("entry-message");
 
-    if (selectedEmployee) {
+    if (selectedEmployee && EmpList(selectedEmployee)) {
         editLine();
         employeeDetails.style.display = "block";
         entryMessage.textContent = "יציאה בוצעה בהצלחה.";
-        document.getElementById("employee-id").textContent = selectedEmployee;
+        // document.getElementById("employee-id").textContent = selectedEmployee;
         document.getElementById("employee-name").textContent = "גיל כהן";
-        document.getElementById("employee-image").src = "employee_image.jpg"; // הוסף את כתובת קובץ התמונה
+        document.getElementById("employee-image").src = "https://www.liquidplanner.com/wp-content/uploads/2021/04/339hgg-1.png"; // הוסף את כתובת קובץ התמונה
         setTimeout(function () {
             employeeDetails.style.display = "none";
             entryMessage.textContent = "";
             employeeInput.value = "";
         }, 4000);
     } else {
-        alert("אנא הכנס מספר עובד");
+        alert("אנא הכנס מספר עובד תקין");
     }
 }
 function queryEmployee() {
@@ -112,3 +125,5 @@ function queryEmployee() {
 }
 updateTime();
 setInterval(updateTime, 1000);
+inputView();
+getList();

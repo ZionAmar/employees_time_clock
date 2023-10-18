@@ -6,27 +6,37 @@ router.get("/", (req, res) => {
     res.render("time_clock_page", {pageTitle: "time_clock"});
 });
 router.post("/Add", (req, res) => {
-    let {name} = req.body;
+    let { id } = req.body;
     let now = new Date();
     const date = now.toISOString().slice(0, 10); // משיג תאריך בפורמט "YYYY-MM-DD"
     let entry_time = now.toLocaleTimeString();
-    let Query = "INSERT INTO time_clock";
-    Query += " (name, date, entry_time)";
-    Query += " VALUES (";
-    entry_time = entry_time ? `'${entry_time}'` : 'NULL';
-    Query += ` '${name}', '${date}', ${entry_time})`;
-    console.log("adding task",Query);
-    db_pool.query(Query, function (err, rows, fields) {
 
-        if (err) {
-            res.status(500).json({message: err})
+    // שאילתת SELECT כדי לקבל את השם מטבלת העובדים
+    let selectQuery = `SELECT CONCAT(firstName, ' ', lastName) AS name FROM employees WHERE id = ${id}`;
+
+    db_pool.query(selectQuery, (error, results, fields) => {
+        if (error) {
+            res.status(500).json({ message: error });
         } else {
-            res.status(200).json({message: "OK"});
+            // שם העובד מהתוצאה שקיבלנו
+            let name = results[0].name;
+
+            // שאילתת INSERT לטבלת הזמנים
+            let insertQuery = `INSERT INTO time_clock (name, date, entry_time) VALUES ('${name}', '${date}', '${entry_time}')`;
+
+            db_pool.query(insertQuery, (error, results, fields) => {
+                if (error) {
+                    res.status(500).json({ message: error });
+                } else {
+                    res.status(200).json({ message: "OK" });
+                }
+            });
         }
     });
 });
+
 router.get("/List", (req, res) => {
-    let q = `SELECT id, CONCAT(firstName, ' ', lastName) AS fullName FROM employees`;
+    let q = `SELECT id, CONCAT(firstName, ' ', lastName) AS name FROM employees`;
     db_pool.query(q, function (err, rows, fields) {
         if (err) {
             res.status(500).json({message: err})
@@ -36,26 +46,38 @@ router.get("/List", (req, res) => {
     });
 });
 router.patch("/Update", (req, res) => {
-    let {name} = req.body;
+    let { id } = req.body;
     let now = new Date();
     const date = now.toISOString().slice(0, 10); // משיג תאריך בפורמט "YYYY-MM-DD"
     let exit_time = now.toLocaleTimeString();
-    let Query = "UPDATE time_clock SET exit_time";
-    Query += `= '${exit_time}'`;
-    Query += " WHERE name";
-    Query += `= '${name}'`;
-    Query += " AND date";
-    Query += `= '${date}'`;
-    Query += " AND entry_time";
-    Query += " IS NOT NULL";
-    console.log("adding task",Query);
-    db_pool.query(Query, function (err, rows, fields) {
 
-        if (err) {
-            res.status(500).json({message: err})
+    // שאילתת SELECT כדי לקבל את השם מטבלת העובדים
+    let selectQuery = `SELECT CONCAT(firstName, ' ', lastName) AS name FROM employees WHERE id = ${id}`;
+
+    db_pool.query(selectQuery, (error, results, fields) => {
+        if (error) {
+            res.status(500).json({ message: error });
         } else {
-            res.status(200).json({message: "OK"});
-        }
+            // שם העובד מהתוצאה שקיבלנו
+            let name = results[0].name;
 
+            // שאילתת INSERT לטבלת הזמנים
+            let insertQuery = "UPDATE time_clock";
+            insertQuery += " SET exit_time ";
+            insertQuery += `= '${exit_time}'`;
+            insertQuery += " WHERE name";
+            insertQuery += `= '${name}'`;
+            insertQuery += " AND date";
+            insertQuery += `= '${date}'`;
+            insertQuery += " AND entry_time";
+            insertQuery += " IS NOT NULL";
+            db_pool.query(insertQuery, (error, results, fields) => {
+                if (error) {
+                    res.status(500).json({ message: error });
+                } else {
+                    res.status(200).json({ message: "OK" });
+                }
+            });
+        }
     });
 });
