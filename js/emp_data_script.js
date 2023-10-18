@@ -2,7 +2,9 @@ let raw_data=[];
 console.log("הדף עובד");
 function CreateTble(){
     let str="";
+    let EMPname = "";
     for(let line of raw_data){
+        EMPname =`שלום ${line.name}`;
         str+="<tr>";
         str+=`<td>${line.name}</td>`;
         str+=`<td>${line.FormattedDate}</td>`;
@@ -11,11 +13,13 @@ function CreateTble(){
         str+=`<td><button class="btn" onclick="deleteLine(${line.id})">מחק</button></td>`;
         str+="</tr>";
     }
-    document.getElementById("mainTable").innerHTML=str;
+    document.getElementById("mainTable").innerHTML= str;
+    document.getElementById("empName").innerHTML= EMPname;
 }
-async function showList() {
+async function showList(x) {
     let objToServer={};
-    objToServer.name=document.getElementById("employeeName").value;
+    objToServer.id=x;
+    console.log(x);
     let response = await fetch('/empData/Update', {
             method: 'PATCH',
             headers: {
@@ -38,18 +42,18 @@ async function getEmpList() {
     let data = await response.json();
     raw_data = data.rows;
     console.log(raw_data);
-    selectEmp();
+    // selectEmp();
 }
 
-function selectEmp(){
-    let empName="";
-    for(let line of raw_data){
-        empName+="<option>";
-        empName+= line.fullName;
-        empName+="</option>";
-    }
-    document.getElementById("employeeName").innerHTML= empName;
-}
+// function selectEmp(){
+//     let empName="";
+//     for(let line of raw_data){
+//         empName+="<option>";
+//         empName+= line.fullName;
+//         empName+="</option>";
+//     }
+//     document.getElementById("employeeName").innerHTML= empName;
+// }
 async function deleteLine(id) {
     let response = await fetch(`/empData/Delete/${id}`,{
             method: 'DELETE',
@@ -65,6 +69,16 @@ function updateTime() {
     timestampElement.textContent = now.toLocaleTimeString();
     datestampElement.textContent = now.toLocaleDateString();
 }
+function getIDFromURL() {
+    const url = new URL(window.location.href);
+    const id = url.searchParams.get('id');
+
+    console.log(id);
+    return id;
+}
+
+console.log(getIDFromURL());
+showList(getIDFromURL());
 getEmpList();
 updateTime();
 setInterval(updateTime, 1000);

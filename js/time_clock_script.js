@@ -117,10 +117,10 @@ function queryEmployee() {
     // שימוש בכתובת דף אחר לפי המספר שנמצא באינפוט
     const employeeInput = document.getElementById("employee-input");
     const selectedEmployee = employeeInput.value;
-    if (selectedEmployee) {
+    if (EmpList(selectedEmployee) && selectedEmployee) {
         window.location.href = `http://localhost:5656/empData?id=${selectedEmployee}`;
     } else {
-        alert("אנא הכנס מספר עובד");
+        alert("אנא הכנס מספר עובד תקין");
     }
 }
 updateTime();
