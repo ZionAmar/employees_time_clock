@@ -19,5 +19,3 @@ const time_clock =require('./routes/time_clock');
 app.use('/timeClock',time_clock);
 const emp_data =require('./routes/emp_data');
 app.use('/empData',emp_data);
-const photo =require('./routes/photos');
-app.use('/photo',photo);

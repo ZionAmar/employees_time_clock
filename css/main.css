@@ -82,17 +82,25 @@ th{background-color: aqua;}
     text-align: center;
     margin-bottom: 20px; /* יוריד את האינפוט למתחת לכפתורים */
 }
+.entry-button{
+    background-color: green;
+}
+.exit-button{
+    background-color: red;
+}
+.query-button{
+    background-color: #007bff;
+}
 .entry-button,
 .exit-button,
 .query-button {
-    background-color: #007bff;
     color: #fff;
     border: none;
     padding: 10px 20px;
-    font-size: 28px;
+    font-size: 45px;
     border-radius: 5px;
     cursor: pointer;
-    margin: 10px;
+    margin: 10px 40px;
 }
 #employee-details {
     display: none;
