@@ -8,7 +8,7 @@ router.get("/", (req, res) => {
 router.patch("/Update", (req, res) => {
     let { id } = req.body;
     // שאילתת SELECT כדי לקבל את השם מטבלת העובדים
-    let selectQuery = `SELECT CONCAT(firstName, ' ', lastName) AS name FROM employees WHERE id = ${id}`;
+    let selectQuery = `SELECT CONCAT(FirstName, ' ', LastName) AS name FROM employees WHERE EmployeeID = ${id}`;
 
     db_pool.query(selectQuery, (error, results, fields) => {
         if (error) {

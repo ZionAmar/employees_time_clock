@@ -13,7 +13,7 @@ function inputView(){
 function EmpList(x){
     let i = 0;
     for(let line of raw_data) {
-        if (line.id == x) {
+        if (line.EmployeeID == x) {
             i++;
         }
     }
@@ -62,8 +62,8 @@ function updateTime() {
     const timestampElement = document.getElementById("timestamp");
     const datestampElement = document.getElementById("datestamp");
     const now = new Date();
-    timestampElement.textContent = now.toLocaleTimeString();
-    datestampElement.textContent = now.toLocaleDateString();
+    timestampElement.innerHTML =`שעה: ${now.toLocaleTimeString()}`;
+    datestampElement.textContent =` תאריך: ${now.toLocaleDateString()}`;
 }
 
 function recordEntry() {

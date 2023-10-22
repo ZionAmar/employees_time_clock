@@ -19,3 +19,5 @@ const time_clock =require('./routes/time_clock');
 app.use('/timeClock',time_clock);
 const emp_data =require('./routes/emp_data');
 app.use('/empData',emp_data);
+const Add_Emp =require('./routes/Add_Employee');
+app.use('/AddEmp',Add_Emp);

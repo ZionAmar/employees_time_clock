@@ -54,13 +54,13 @@ async function getEmpList() {
 //     }
 //     document.getElementById("employeeName").innerHTML= empName;
 // }
-async function deleteLine(id) {
-    let response = await fetch(`/empData/Delete/${id}`,{
-            method: 'DELETE',
-        }
-    );
-    showList();
-}
+// async function deleteLine(id) {
+//     let response = await fetch(`/empData/Delete/${id}`,{
+//             method: 'DELETE',
+//         }
+//     );
+//     showList();
+// }
 function updateTime() {
     document.getElementById("title").innerHTML="השעות שלי";
     const timestampElement = document.getElementById("timestamp");

@@ -15,7 +15,7 @@ router.post("/Add", (req, res) => {
     let entry_time = now.toLocaleTimeString();
 
     // שאילתת SELECT כדי לקבל את השם מטבלת העובדים
-    let selectQuery = `SELECT CONCAT(firstName, ' ', lastName) AS name FROM employees WHERE id = ${id}`;
+    let selectQuery = `SELECT CONCAT(FirstName, ' ', LastName) AS FullName FROM employees WHERE EmployeeID = ${id}`;
 
     db_pool.query(selectQuery, (error, results, fields) => {
         if (error) {
@@ -39,7 +39,7 @@ router.post("/Add", (req, res) => {
 });
 
 router.get("/List", (req, res) => {
-    let q = `SELECT id, CONCAT(firstName, ' ', lastName) AS name FROM employees`;
+    let q = `SELECT EmployeeID, CONCAT(FirstName, ' ', LastName) AS FullName FROM employees`;
     db_pool.query(q, function (err, rows, fields) {
         if (err) {
             res.status(500).json({message: err})
@@ -58,7 +58,7 @@ router.patch("/Update", (req, res) => {
     let exit_time = now.toLocaleTimeString();
 
     // שאילתת SELECT כדי לקבל את השם מטבלת העובדים
-    let selectQuery = `SELECT CONCAT(firstName, ' ', lastName) AS name FROM employees WHERE id = ${id}`;
+    let selectQuery = `SELECT CONCAT(FirstName, ' ', LastName) AS name FROM employees WHERE EmployeeID = ${id}`;
 
     db_pool.query(selectQuery, (error, results, fields) => {
         if (error) {

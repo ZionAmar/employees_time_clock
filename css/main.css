@@ -1,20 +1,16 @@
-body{direction: rtl;
-font-size: x-large;
+main,.header {
+    direction: rtl;
+    font-size: x-large;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
 }
 td{border: 1px solid black;}
 th{background-color: aqua;}
 .btn,option{
     font-size: x-large;
 }
-
-
- body {
-     font-family: Arial, sans-serif;
-     background-color: #f4f4f4;
-     margin: 0;
-     padding: 0;
- }
-
 .header {
     display: flex;
     justify-content: space-between;

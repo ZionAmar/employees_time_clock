@@ -1,0 +1,98 @@
+<%-include("page_top.ejs")%>
+<all>
+    <div id="container">
+        <div id="image-form-container">
+            <div class="form-container">
+<!--                <form>-->
+                    <label for="firstName">שם פרטי:</label>
+                    <input
+                            type="text"
+                            id="firstName"
+                            name="firstName"
+                            required
+                    /><br /><br />
+                    <label for="lastName">שם משפחה:</label>
+                    <input
+                            type="text"
+                            id="lastName"
+                            name="lastName"
+                            required
+                    /><br /><br />
+                    <label for="phone">טלפון:</label>
+                    <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            pattern="[0-9]{3}-[0-9]{7}"
+                            placeholder="פורמט: 123-4567890"
+                            required
+                    /><br /><br />
+                    <label for="id">תעודת זהות:</label>
+                    <input type="text" id="id" name="id" required /><br /><br />
+                    <label for="address">כתובת:</label>
+                    <input
+                            type="text"
+                            id="address"
+                            name="address"
+                            required
+                    /><br /><br />
+            </div>
+            <div class="form-container">
+                <label for="email">כתובת מייל:</label>
+                <input
+                        type="email"
+                        id="email"
+                        name="email"
+                /><br /><br />
+                <label for="jobTitle">תפקיד:</label>
+                <input
+                        type="text"
+                        id="jobTitle"
+                        name="jobTitle"
+                        required
+                /><br /><br />
+                <label for="startDate">תאריך תחילת העסקה:</label>
+                <input
+                        type="date"
+                        id="startDate"
+                        name="startDate"
+                        required
+                /><br /><br />
+                <label for="hourlyRate">שכר לשעה:</label>
+                <input
+                        type="number"
+                        id="hourlyRate"
+                        name="hourlyRate"
+                /><br /><br />
+                <label for="bankDetails">פרטי חשבון בנק:</label>
+                <input
+                        type="text"
+                        id="bankDetails"
+                        name="bankDetails"
+                /><br /><br />
+            </div>
+            <div id="image-container">
+                <div id="card-container">
+                    <div id="image-preview-container">
+                        <img id="image-preview" src="#" alt="תצוגה מקדימה" />
+                    </div>
+                    <label for="fileInput" id="fileInputLabel">
+                        <p>הוסף תמונה</p>
+                    </label>
+                    <input
+                            type="file"
+                            id="fileInput"
+                            accept="image/*"
+                            onchange="loadImage()"
+                    />
+                </div>
+                <button class="btn" onclick="AddNewLine()">שמור</button>
+            </div>
+<!--            </form>-->
+        </div>
+    </div>
+    </div>
+</all>
+</body>
+<script src="/js/Add_empScript.js"></script>
+<%-include("page_bottom.ejs")%>
