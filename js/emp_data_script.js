@@ -3,10 +3,10 @@ let raw_data=[];
 console.log("הדף עובד");
 function CreateTble(){
     let str="";
-    let EMPname = "";
+    let EMPname = "השעות שלך";
     for(let line of raw_data){
         document.querySelector(".signature-image").src=`${line.ImageURL}`;
-        EMPname =`שלום ${line.name}`;
+        document.getElementById("title").innerHTML=`שלום ${line.name}`;
         str+="<tr>";
         str+=`<td>${line.FormattedDate}</td>`;
         str+=`<td style="color: green">${line.entry_time}</td>`;
@@ -45,7 +45,6 @@ async function getEmpList() {
     console.log(raw_data);
 }
 function updateTime() {
-    document.getElementById("title").innerHTML="השעות שלי";
     const timestampElement = document.getElementById("timestamp");
     const datestampElement = document.getElementById("datestamp");
     const now = new Date();
