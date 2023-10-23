@@ -6,13 +6,12 @@
 
     // המשמעות הכללית שה- footer מתחיל להופיע רק כאשר המשתמש מגלול למטה
     function checkFooterVisibility() {
-        if (window.scrollY > 70) {
+        if (window.scrollY > 60) {
             footer.classList.add('visible');
         }else {
             footer.classList.remove('visible');
         }
     }
-
     // שמע לאירוע הגלילה של הדף
     window.addEventListener('scroll', checkFooterVisibility);
 </script>
