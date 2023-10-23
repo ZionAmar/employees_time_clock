@@ -1,4 +1,4 @@
-
+body{margin: 0}
 main,.header {
     direction: rtl;
     font-size: x-large;
@@ -6,6 +6,9 @@ main,.header {
     margin: 0;
     padding: 0;
     justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 #page{
     display: flex;
