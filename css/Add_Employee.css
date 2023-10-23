@@ -1,11 +1,9 @@
-all {
+.all {
     direction:rtl;
     font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
     display: flex;
     justify-content: center;
     align-items: center;
-    /*height: 100vh;*/
 }
 .signature-image {
     max-width: 100px;
@@ -97,7 +95,6 @@ input[type="time"] {
     padding: 5px;
     margin-bottom: 5px;
 }
-/* כפתור השמירה */
 .btn {
     font-size: 20px; /* הגדלת גודל הגופן */
     padding: 10px 20px; /* רווחים מסביב לכפתור */
@@ -107,8 +104,6 @@ input[type="time"] {
     border-radius: 5px; /* עיגול פינות */
     cursor: pointer; /* שינוי סמל העכבר בעת העברת על הכפתור */
 }
-
-/* כשהעכבר עובר מעל הכפתור */
 .btn:hover {
     background-color: #2779d4; /* צבע רקע משתנה */
 }

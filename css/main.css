@@ -1,10 +1,37 @@
+
 main,.header {
     direction: rtl;
     font-size: x-large;
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
+    justify-content: center;
+}
+#page{
+    display: flex;
+}
+.link{
+    width: 33.3%;
+    text-align: center;
+}
+a {
+    text-decoration: none; /* למחוק את הקו התחתון */
+    color: #0077b6; /* צבע הטקסט */
+}
+
+a:hover {
+    text-decoration: none; /* למחוק את הקו התחתון בעת ההעברה בעכבר */
+    color: #ff6b6b; /* לשנות צבע הטקסט בעת העברה בעכבר */
+}
+.img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-top: 20%;
+    text-align: center;
+}
+#table{
+    justify-content: center;
 }
 td{border: 1px solid black;}
 th{background-color: aqua;}
@@ -19,15 +46,13 @@ th{background-color: aqua;}
     background-color: #007bff;
     color: #fff;
 }
-
 .company-logo {
     width: 100px;
 }
-
 #title{
-    font-size: 28px;
+    font-size: 32px;
     font-weight: 600;
-    margin: 0px;
+    margin: 0;
     display: flex;
     justify-content: center;
 }
@@ -36,22 +61,19 @@ th{background-color: aqua;}
     align-items: center;
     font-size: 24px;
 }
-
 .timestamp {
     margin: 0 5px;
 }
-
 .signature-image {
     max-width: 100px;
 }
-
 .content {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 900px;
 }
-
 .card {
     background-color: #fff;
     border: 1px solid #ccc;
@@ -63,20 +85,18 @@ th{background-color: aqua;}
     max-width: 800px;
     margin-top: 50px;
 }
-
 .employee-details {
     margin: 20px 0;
 }
-
 .employee-details p {
     margin: 5px 0;
 }
-
 #employee-input {
     font-size: 24px;
     padding: 10px;
     text-align: center;
     margin-bottom: 20px; /* יוריד את האינפוט למתחת לכפתורים */
+    width: 300px;
 }
 .entry-button{
     background-color: green;
@@ -108,5 +128,19 @@ th{background-color: aqua;}
 #employee-image {
     max-width: 100px;
     border-radius: 50%;
+}
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: sticky;
+    bottom: 0;
+    visibility: hidden;
+}
+
+/* המשמעות הכללית שה- footer מתחיל להופיע רק כאשר המשתמש מגלול למטה */
+footer.visible {
+    visibility: visible;
 }
 

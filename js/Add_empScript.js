@@ -13,10 +13,10 @@ async function AddNewLine() {
     let bankDetails = document.getElementById("bankDetails").value;
     let image = document.getElementById("fileInput").files[0];
 
-    // if (!firstName || !lastName || !image) {
-    //     alert("יש למלא את כל השדות");
-    //     return;
-    // }
+    if (!firstName || !lastName || !image) {
+        alert("יש למלא את כל השדות");
+        return;
+    }
 
     let formData = new FormData();
     formData.append('firstName', firstName);
@@ -34,15 +34,15 @@ async function AddNewLine() {
 
     // כאן אתה משתמש ב-try/catch עבור הבקשה fetch
     try {
-        const response = await fetch('/Add_Emp/Add', {
+        const response = await fetch('/emp/Add', {
             method: 'POST',
             body: formData
         });
 
         if (response.status === 200) {
+            // הפונקציה תמשיך לכאן רק אם הבקשה הצליחה
             // alert('עובד נוסף בהצלחה!');
         } else if (response.status === 400) {
-            // אם יש כבר עובד בשם זה
             alert('שם עובד כבר קיים');
         } else {
             // אם יש שגיאה אחרת מצד השרת
@@ -64,7 +64,8 @@ function clearInputs() {
     document.getElementById("startDate").value = '';
     document.getElementById("hourlyRate").value = '';
     document.getElementById("bankDetails").value = '';
-    document.getElementById("fileInput").value = ''; // או שנקה גם כאן, אם זה אפשרי בהקשר שלך
+    document.getElementById("image-preview").src="";
+    document.getElementById("fileInputLabel").style.display="flex";
 }
 function loadImage() {
     const fileInput = document.getElementById("fileInput");
@@ -85,7 +86,6 @@ function loadImage() {
     }
 }
 function updateTime() {
-    document.getElementById("title").innerHTML="פרטי העובד";
-    document.querySelector(".signature-image").src="photos/Question_mark.png";
+    document.getElementById("title").innerHTML="הוספת עובד";
 }
 updateTime();

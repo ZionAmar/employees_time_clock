@@ -1,13 +1,10 @@
 
 <%-include("page_top.ejs")%>
-<center><main>
-<!--        <input id="firstName" placeholder="שם פרטי">-->
-<!--        <input id="lastName" placeholder="שם משפחה">-->
-<!--        <input type="file" id="image" accept="image/*">-->
-<!--        <button onclick="AddNewLine()">הוסף</button>-->
-        <a href="http://localhost:5656/Add_Emp" target="_blank">הוספת עובד</a>
+<center><main><div id="page">
         <br><br>
-        <table>
+        <div class="link"><a href="http://localhost:5656/emp/AddEmp"><img class="img" id="addEmp" src=""><br/><i>הוספת עובד</i></a></div>
+        <div class="link">
+        <table id="table">
             <thead>
             <tr>
                 <th></th>
@@ -19,7 +16,9 @@
             </thead>
             <tbody id="mainTable">  </tbody>
         </table>
-        <br>
+        </div>
+        <div class="link"><a href="http://localhost:5656/timeClock"><img class="img" id="timeClock" src=""><br/><i>שעון נוכחות</i></a></div>
+        </div>
     </main></center>
-<script src="/js/script.js"></script>
+<script src="/js/employeesScript.js"></script>
 <%-include("page_bottom.ejs")%>

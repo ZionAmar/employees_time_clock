@@ -1,0 +1,40 @@
+<%-include("page_top.ejs")%>
+<div class="all">
+    <div id="container">
+        <div id="image-form-container">
+            <section class="form-container">
+                <label for="firstName">שם פרטי:</label>
+                <div id="firstName"></div><br /><br />
+                <label for="lastName">שם משפחה:</label>
+                <div id="lastName"></div><br /><br />
+                <label for="phone">טלפון:</label>
+                <div id="phone"><br /></div><br />
+                <label for="id">תעודת זהות:</label>
+                <div id="id"></div><br /><br />
+                <label for="address">כתובת:</label>
+                <div id="address"></div><br /><br />
+            </section>
+            <section class="form-container">
+                <label for="email">כתובת מייל:</label>
+                <div id="email"></div><br /><br />
+                <label for="jobTitle">תפקיד:</label>
+                <div id="jobTitle"></div><br /><br />
+                <label for="startDate">תאריך תחילת העסקה:</label>
+                <div id="startDate"></div><br /><br />
+                <label for="hourlyRate">שכר לשעה:</label>
+                <div id="hourlyRate"></div><br /><br />
+                <label for="bankDetails">פרטי חשבון בנק:</label>
+                <div id="bankDetails"></div><br /><br />
+            </section>
+            <section id="image-container">
+                <div id="card-container">
+                    <div id="image-preview-container">
+                        <img id="image-preview" src="" alt="תמונת עובד" />
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+<script src="/js/employee_cardScript.js"></script>
+<%-include("page_bottom.ejs")%>

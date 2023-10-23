@@ -1,9 +1,8 @@
 <%-include("page_top.ejs")%>
-<all>
+<div class="all">
     <div id="container">
         <div id="image-form-container">
-            <div class="form-container">
-<!--                <form>-->
+            <section class="form-container">
                     <label for="firstName">שם פרטי:</label>
                     <input
                             type="text"
@@ -36,8 +35,8 @@
                             name="address"
                             required
                     /><br /><br />
-            </div>
-            <div class="form-container">
+            </section>
+            <section class="form-container">
                 <label for="email">כתובת מייל:</label>
                 <input
                         type="email"
@@ -70,14 +69,14 @@
                         id="bankDetails"
                         name="bankDetails"
                 /><br /><br />
-            </div>
-            <div id="image-container">
+            </section>
+            <section id="image-container">
                 <div id="card-container">
                     <div id="image-preview-container">
                         <img id="image-preview" src="#" alt="תצוגה מקדימה" />
                     </div>
                     <label for="fileInput" id="fileInputLabel">
-                        <p>הוסף תמונה</p>
+                        <b>הוסף תמונה</b>
                     </label>
                     <input
                             type="file"
@@ -86,13 +85,13 @@
                             onchange="loadImage()"
                     />
                 </div>
+                <div>
                 <button class="btn" onclick="AddNewLine()">שמור</button>
             </div>
-<!--            </form>-->
-        </div>
+        </section>
     </div>
     </div>
-</all>
-</body>
+</div>
+<main style="height: 600px"></main>
 <script src="/js/Add_empScript.js"></script>
 <%-include("page_bottom.ejs")%>

@@ -20,12 +20,19 @@ function EmpList(x){
         return i > 0;
 
 }
+function signing(x){
+    for(let line of raw_data) {
+        if (line.EmployeeID == x) {
+            document.getElementById("employee-name").textContent = `${line.FullName}`;
+            document.getElementById("employee-image").src = `${line.ImageURL}`; // הוסף את כתובת קובץ התמונה
+        }
+    }
+}
 async function getList() {
     let response = await fetch('/timeClock/List');
     let data = await response.json();
     raw_data = data.rows;
     console.log(raw_data);
-    // CreateEmpList();
 }
 async function AddNewLine() {
     let id = document.getElementById("employee-input").value;
@@ -39,7 +46,6 @@ async function AddNewLine() {
     );
     let data = await response.json();
     console.log(data);
-    // getList();
 }
 async function editLine() {
     let objToServer={};
@@ -52,13 +58,12 @@ async function editLine() {
             body: JSON.stringify(objToServer)
         }
     );
-    // getList();
 }
 
-// getList();
 
 function updateTime() {
     document.getElementById("title").innerHTML="שעון נוכחות";
+    document.querySelector(".signature-image").src="photos/my_clock.png";
     const timestampElement = document.getElementById("timestamp");
     const datestampElement = document.getElementById("datestamp");
     const now = new Date();
@@ -74,12 +79,9 @@ function recordEntry() {
     console.log(EmpList(selectedEmployee));
     if (selectedEmployee && EmpList(selectedEmployee)) {
         AddNewLine();
-
+        signing(selectedEmployee);
         employeeDetails.style.display = "block";
         entryMessage.textContent = "החתימה בוצעה בהצלחה.";
-        // document.getElementById("employee-id").textContent = selectedEmployee;
-        document.getElementById("employee-name").textContent = "גיל כהן";
-        document.getElementById("employee-image").src = "https://www.liquidplanner.com/wp-content/uploads/2021/04/339hgg-1.png"; // הוסף את כתובת קובץ התמונה
         setTimeout(function () {
             employeeDetails.style.display = "none";
             entryMessage.textContent = "";
@@ -99,11 +101,9 @@ function recordExit() {
 
     if (selectedEmployee && EmpList(selectedEmployee)) {
         editLine();
+        signing(selectedEmployee);
         employeeDetails.style.display = "block";
         entryMessage.textContent = "יציאה בוצעה בהצלחה.";
-        // document.getElementById("employee-id").textContent = selectedEmployee;
-        document.getElementById("employee-name").textContent = "גיל כהן";
-        document.getElementById("employee-image").src = "https://www.liquidplanner.com/wp-content/uploads/2021/04/339hgg-1.png"; // הוסף את כתובת קובץ התמונה
         setTimeout(function () {
             employeeDetails.style.display = "none";
             entryMessage.textContent = "";

@@ -14,8 +14,8 @@ router.post("/Add", (req, res) => {
     const date = `${year}-${month}-${day}`;
     let entry_time = now.toLocaleTimeString();
 
-    // שאילתת SELECT כדי לקבל את השם מטבלת העובדים
-    let selectQuery = `SELECT CONCAT(FirstName, ' ', LastName) AS FullName FROM employees WHERE EmployeeID = ${id}`;
+    // שאילתת SELECT כדי לקבל את השם וה-ImageURL מטבלת העובדים
+    let selectQuery = `SELECT CONCAT(FirstName, ' ', LastName) AS name, ImageURL FROM employees WHERE EmployeeID = ${id}`;
 
     db_pool.query(selectQuery, (error, results, fields) => {
         if (error) {
@@ -23,9 +23,11 @@ router.post("/Add", (req, res) => {
         } else {
             // שם העובד מהתוצאה שקיבלנו
             let name = results[0].name;
+            // ImageURL מהתוצאה שקיבלנו
+            let imageURL = results[0].ImageURL;
 
-            // שאילתת INSERT לטבלת הזמנים
-            let insertQuery = `INSERT INTO time_clock (name, date, entry_time) VALUES ('${name}', '${date}', '${entry_time}')`;
+            // שאילתת INSERT לטבלת הזמנים כוללת גם את ה-ImageURL
+            let insertQuery = `INSERT INTO time_clock (name, date, entry_time, ImageURL) VALUES ('${name}', '${date}', '${entry_time}', '${imageURL}')`;
 
             db_pool.query(insertQuery, (error, results, fields) => {
                 if (error) {
@@ -38,8 +40,9 @@ router.post("/Add", (req, res) => {
     });
 });
 
+
 router.get("/List", (req, res) => {
-    let q = `SELECT EmployeeID, CONCAT(FirstName, ' ', LastName) AS FullName FROM employees`;
+    let q = `SELECT EmployeeID, CONCAT(FirstName, ' ', LastName) AS FullName, ImageURL FROM employees`;
     db_pool.query(q, function (err, rows, fields) {
         if (err) {
             res.status(500).json({message: err})
@@ -57,8 +60,8 @@ router.patch("/Update", (req, res) => {
     const date = `${year}-${month}-${day}`;
     let exit_time = now.toLocaleTimeString();
 
-    // שאילתת SELECT כדי לקבל את השם מטבלת העובדים
-    let selectQuery = `SELECT CONCAT(FirstName, ' ', LastName) AS name FROM employees WHERE EmployeeID = ${id}`;
+    // שאילתת SELECT כדי לקבל את השם וה-ImageURL מטבלת העובדים
+    let selectQuery = `SELECT CONCAT(FirstName, ' ', LastName) AS name, ImageURL FROM employees WHERE EmployeeID = ${id}`;
 
     db_pool.query(selectQuery, (error, results, fields) => {
         if (error) {
@@ -66,21 +69,18 @@ router.patch("/Update", (req, res) => {
         } else {
             // שם העובד מהתוצאה שקיבלנו
             let name = results[0].name;
+            // ImageURL מהתוצאה שקיבלנו
+            let imageURL = results[0].ImageURL;
 
-            // שאילתת INSERT לטבלת הזמנים
-            let insertQuery = "UPDATE time_clock";
-            insertQuery += " SET exit_time ";
-            insertQuery += `= '${exit_time}'`;
-            insertQuery += " , total ";
-            insertQuery += `= TIMEDIFF(exit_time, entry_time)`;
-            insertQuery += " WHERE name";
-            insertQuery += `= '${name}'`;
-            insertQuery += " AND date";
-            insertQuery += `= '${date}'`;
-            insertQuery += " AND entry_time";
-            insertQuery += " IS NOT NULL";
-            console.log(insertQuery);
-            db_pool.query(insertQuery, (error, results, fields) => {
+            // שאילתת UPDATE לטבלת הזמנים
+            let updateQuery = "UPDATE time_clock";
+            updateQuery += ` SET exit_time = '${exit_time}',`;
+            updateQuery += ` ImageURL = '${imageURL}',`;
+            updateQuery += " total = TIMEDIFF(exit_time, entry_time)";
+            updateQuery += ` WHERE name = '${name}' AND date = '${date}' AND entry_time IS NOT NULL`;
+
+            console.log(updateQuery);
+            db_pool.query(updateQuery, (error, results, fields) => {
                 if (error) {
                     res.status(500).json({ message: error });
                 } else {

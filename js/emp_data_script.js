@@ -5,6 +5,7 @@ function CreateTble(){
     let str="";
     let EMPname = "";
     for(let line of raw_data){
+        document.querySelector(".signature-image").src=`${line.ImageURL}`;
         EMPname =`שלום ${line.name}`;
         str+="<tr>";
         str+=`<td>${line.FormattedDate}</td>`;
@@ -42,32 +43,14 @@ async function getEmpList() {
     let data = await response.json();
     raw_data = data.rows;
     console.log(raw_data);
-    // selectEmp();
 }
-
-// function selectEmp(){
-//     let empName="";
-//     for(let line of raw_data){
-//         empName+="<option>";
-//         empName+= line.fullName;
-//         empName+="</option>";
-//     }
-//     document.getElementById("employeeName").innerHTML= empName;
-// }
-// async function deleteLine(id) {
-//     let response = await fetch(`/empData/Delete/${id}`,{
-//             method: 'DELETE',
-//         }
-//     );
-//     showList();
-// }
 function updateTime() {
     document.getElementById("title").innerHTML="השעות שלי";
     const timestampElement = document.getElementById("timestamp");
     const datestampElement = document.getElementById("datestamp");
     const now = new Date();
-    timestampElement.textContent = now.toLocaleTimeString();
-    datestampElement.textContent = now.toLocaleDateString();
+    timestampElement.innerHTML =`שעה: ${now.toLocaleTimeString()}`;
+    datestampElement.textContent =` תאריך: ${now.toLocaleDateString()}`;
 }
 function getIDFromURL() {
     const url = new URL(window.location.href);
