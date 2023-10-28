@@ -24,7 +24,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 router.get("/", (req, res) => {
-    res.render("mainPage", {pageTitle: "Employees"});
+    res.render("employees_page", {pageTitle: "Employees"});
 });
 router.get("/AddEmp", (req, res) => {
     res.render("Add_Employee", {pageTitle: "addEmp"});

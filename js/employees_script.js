@@ -34,8 +34,9 @@ function updateTime() {
     document.getElementById("addEmp").src="/photos/add_emp.jpg";
     document.getElementById("timeClock").src="/photos/my_clock.png";
 }
-async function editLine(id){
-    window.location.href = `http://localhost:5656/emp/EmpCard?id=${id}`;
+async function editLine(id) {
+    window.location.href = `${window.location.origin}/emp/EmpCard?id=${id}`;
 }
+
 getList();
 updateTime();

@@ -4,21 +4,21 @@
         <div id="image-form-container">
             <section class="form-container">
                     <label for="firstName">שם פרטי:</label>
-                    <input
+                    <input class="input"
                             type="text"
                             id="firstName"
                             name="firstName"
                             required
                     /><br /><br />
                     <label for="lastName">שם משפחה:</label>
-                    <input
+                    <input class="input"
                             type="text"
                             id="lastName"
                             name="lastName"
                             required
                     /><br /><br />
                     <label for="phone">טלפון:</label>
-                    <input
+                    <input class="input"
                             type="tel"
                             id="phone"
                             name="phone"
@@ -27,9 +27,9 @@
                             required
                     /><br /><br />
                     <label for="id">תעודת זהות:</label>
-                    <input type="text" id="id" name="id" required /><br /><br />
+                    <input class="input" type="text" id="id" name="id" required /><br /><br />
                     <label for="address">כתובת:</label>
-                    <input
+                    <input class="input"
                             type="text"
                             id="address"
                             name="address"
@@ -38,33 +38,33 @@
             </section>
             <section class="form-container">
                 <label for="email">כתובת מייל:</label>
-                <input
+                <input class="input"
                         type="email"
                         id="email"
                         name="email"
                 /><br /><br />
                 <label for="jobTitle">תפקיד:</label>
-                <input
+                <input class="input"
                         type="text"
                         id="jobTitle"
                         name="jobTitle"
                         required
                 /><br /><br />
                 <label for="startDate">תאריך תחילת העסקה:</label>
-                <input
+                <input class="input"
                         type="date"
                         id="startDate"
                         name="startDate"
                         required
                 /><br /><br />
                 <label for="hourlyRate">שכר לשעה:</label>
-                <input
+                <input class="input"
                         type="number"
                         id="hourlyRate"
                         name="hourlyRate"
                 /><br /><br />
                 <label for="bankDetails">פרטי חשבון בנק:</label>
-                <input
+                <input class="input"
                         type="text"
                         id="bankDetails"
                         name="bankDetails"
@@ -78,7 +78,7 @@
                     <label for="fileInput" id="fileInputLabel">
                         <b>הוסף תמונה</b>
                     </label>
-                    <input
+                    <input class="input"
                             type="file"
                             id="fileInput"
                             accept="image/*"
@@ -92,5 +92,5 @@
     </div>
     </div>
 </div>
-<script src="/js/Add_empScript.js"></script>
+<script src="/js/Add_emp_script.js"></script>
 <%-include("page_bottom.ejs")%>

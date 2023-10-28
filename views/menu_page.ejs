@@ -1,0 +1,95 @@
+<%-include("page_top.ejs")%>
+<menu id="menu_page">
+<div class="login_container" id="login">
+    <h2>התחברות</h2>
+    <form class="login-form">
+        <label for="username" class="input-login_label">שם משתמש:</label>
+        <input class="menu_input" type="text" id="username" name="username" />
+        <br />
+        <label for="password" class="input-login_label">סיסמה:</label>
+        <input class="menu_input" type="password" id="password" name="password" />
+        <br /><br />
+        <button id="loginButton" class="login-button" type="button">
+            כניסה
+        </button>
+    </form>
+</div>
+<div class="login_container" id="gallery">
+    <div class="link_images">
+        <div class="image-container">
+            <a href="/emp">
+            <img src="/photos/my_employees.png" alt="רשימת העובדים" />
+            <p class="image-link-label">רשימת העובדים</p>
+            </a>
+        </div>
+        <div class="image-container">
+            <a href="/emp/AddEmp">
+            <img src="/photos/add_emp.jpg" alt="הוסף עובד" />
+            <p class="image-link-label">הוסף עובד</p>
+            </a>
+        </div>
+        <div class="image-container">
+            <a href="/timeClock">
+            <img src="/photos/my_clock.png" alt="שעון נוכחות" />
+            <p class="image-link-label">שעון נוכחות</p>
+            </a>
+        </div>
+        <div class="image-container">
+            <a>
+                <img src="/photos/employee_productivity.jpeg" alt="תפוקת העובדים" />
+                <p class="image-link-label">תפוקת העובדים</p>
+            </a>
+        </div>
+        <div class="image-container">
+            <a>
+            <img src="/photos/my_product.png" alt="ניהול מלאי" />
+            <p class="image-link-label">ניהול מלאי</p>
+            </a>
+        </div>
+        <div class="image-container">
+            <a>
+            <img src="/photos/my_orders.jpg" alt="הזמנות" />
+            <p class="image-link-label">הזמנות</p>
+            </a>
+        </div>
+        <div class="image-container">
+            <a>
+            <img src="/photos/my_shippings.jpg" alt="משלוחים" />
+            <p class="image-link-label">משלוחים</p>
+            </a>
+        </div>
+        <div class="image-container">
+            <a>
+            <img src="/photos/emp_reports.jpg" alt="דוחות" />
+            <p class="image-link-label">דוחות</p>
+            </a>
+        </div>
+        <div class="image-container">
+            <a>
+            <img src="/photos/my_customers.png" alt="לקוחות" />
+            <p class="image-link-label">לקוחות</p>
+            </a>
+        </div>
+        <div class="image-container">
+            <a>
+            <img src="image10.jpg" />
+            <p class="image-link-label">קישור 10</p>
+            </a>
+        </div>
+        <div class="image-container">
+            <a>
+            <img src="image11.jpg" />
+            <p class="image-link-label">קישור 11</p>
+            </a>
+        </div>
+        <div class="image-container">
+            <a>
+            <img src="/photos/my_email.jpg" alt="דוא''ל" />
+            <p class="image-link-label">דוא''ל</p>
+            </a>
+        </div>
+    </div>
+</div>
+</menu>
+<script src="/js/menu_page_script.js"></script>
+<%-include("page_bottom.ejs")%>

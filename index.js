@@ -13,6 +13,8 @@ app.listen(port, () => {
     console.log(`Now listening on port http://localhost:${port}`);
 });
 //הפניות בראוטר
+const menu =require('./routes/menu');
+app.use('/',menu);
 const employees =require('./routes/employees');
 app.use('/emp',employees);
 const time_clock =require('./routes/time_clock');

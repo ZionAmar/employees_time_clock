@@ -118,7 +118,8 @@ function queryEmployee() {
     const employeeInput = document.getElementById("employee-input");
     const selectedEmployee = employeeInput.value;
     if (EmpList(selectedEmployee) && selectedEmployee) {
-        window.location.href = `http://localhost:5656/empData?id=${selectedEmployee}`;
+        window.location.href = `${window.location.origin}/empData?id=${selectedEmployee}`;
+        // alert("hhh");
     } else {
         alert("אנא הכנס מספר עובד תקין");
     }
