@@ -1,0 +1,36 @@
+@media (min-width: 250px) and (max-width: 650px) {
+    /*body {*/
+    /*    background-color: lightblue;*/
+    /*}*/
+    .login_container {
+        max-width: 450px;
+    }
+    .link_images {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5px 60px;
+    }
+    .signature-image {
+        display: none;
+    }
+    .login-form {
+        max-width: 200px;
+    }
+    .input-login_label {
+        font-size: 10px;
+    }
+    .menu_input {
+        font-size: 60%;
+    }
+}
+@media (min-width: 650px) and (max-width: 1024px) {
+    /* מסכי טבלט */
+    /*body {*/
+    /*    background-color: yellowgreen;*/
+    /*}*/
+    .login_container {
+        width: 750px;
+    }
+    .link_images {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
